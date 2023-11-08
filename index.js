@@ -51,16 +51,16 @@ bot.on('text', async (ctx) => {
                 const data = await response.json();
                 const coinData = data.find(item => item.symbol === `${command.toUpperCase()}`);
                 if (coinData) {
-                    const message = `<pre>Market       |  ${coinData.symbol}
+          const message = `<pre>Market       |  ${coinData.symbol}
 ------------ | --------------
-Last Traded  |  ${(coinData.lastPrice).toFixed(4)}
+Last Traded  |  ${(coinData.lastPrice)}
 24hr change  |  ${coinData.priceChangePercent >= 0 ? '+' : ''} ${coinData.priceChangePercent}% ${coinData.priceChangePercent >= 0 ? '⬆️' : '⬇️'}
 </pre>
-<pre>Buy at       |  ${(coinData.askPrice).toFixed(4)}
-Sell at      |  ${(coinData.bidPrice).toFixed(4)}
-24hr Low     |  ${(coinData.lowPrice).toFixed(4)}
-24hr High    |  ${(coinData.highPrice).toFixed(4)}
-24Hr Volume  |  ${(coinData.volume).toFixed(4)}</pre>`;
+<pre>Buy at       |  ${(coinData.askPrice)}
+Sell at      |  ${(coinData.bidPrice)}
+24hr Low     |  ${(coinData.lowPrice)}
+24hr High    |  ${(coinData.highPrice)}
+24Hr Volume  |  ${(coinData.volume)}</pre>`;
 
                     const binanceLink = `https://www.binance.com/en/trade/${coinData.symbol}`;
                     const keyboard = Markup.inlineKeyboard([Markup.button.url('Trade on Binance', binanceLink)]);
